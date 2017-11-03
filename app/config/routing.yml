@@ -1,0 +1,7 @@
+romain_memoire:
+    resource: "@RomainMemoireBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

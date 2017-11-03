@@ -1,0 +1,11 @@
+romain_memoire_home:
+    path:     /home
+    defaults: { _controller: RomainMemoireBundle:Home:Home }
+
+romain_memoire_show:
+    path:     /show
+    defaults: { _controller: RomainMemoireBundle:Show:show }
+
+romain_memoire_edit:
+    path:     /edit
+    defaults: { _controller: RomainMemoireBundle:Edit:edit }

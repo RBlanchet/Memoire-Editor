@@ -1,0 +1,18 @@
+{% extends "RomainMemoireBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - {{ param.mois }}{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">
+        {{ param.mois }}
+    </h1>
+    <div class="wrap">
+        <div id="text-content" class="editor-text">
+        {{ param.content|raw }}
+        </div>
+    </div>
+    <form method="post" action="./edit">
+        <input type="hidden" value="{{ param.id }}" name="edit_id">
+        <input type="submit" value="Editer" class="btn btn-primary btn-lg button_edit_content">
+    </form>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "RomainMemoireBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Edition{% endblock %}
+
+{% block content %}
+    <div class="title-edited-content">
+        <h1>{{ param.mois }}</h1>
+    </div>
+    <div class="editor">
+        <div class="wrap">
+            <div class="toolbar">
+                <button id="bold" title="Bold (Ctrl+B)"><i class="fa fa-bold"></i></button>
+                <button id="italic" title="Italic (Ctrl+I)"><i class="fa fa-italic"></i></button>
+                <button id="underline" title="Underline (Ctrl+U)"><i class="fa fa-underline"></i></button>
+                <select name="fonts" id="fonts">
+                    <option value="Arial" selected>Arial</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Impact">Impact</option>
+                    <option value="Courier New">Courier New</option>
+                </select>
+                <select name="size" id="size">
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="14">14</option>
+                    <option value="16" selected>16</option>
+                    <option value="18">18</option>
+                    <option value="20">20</option>
+                    <option value="22">22</option>
+                    <option value="24">24</option>
+                    <option value="26">26</option>
+                </select>
+                <input type="text" id="color"/>
+                <button id="align-left" title="Left"><i class="fa fa-align-left"></i></button>
+                <button id="align-center" title="Center"><i class="fa fa-align-center"></i></button>
+                <button id="align-right" title="Right"><i class="fa fa-align-right"></i></button>
+                <button id="list-ul" title="Unordered List"><i class="fa fa-list-ul"></i></button>
+                <button id="list-ol" title="Ordered List"><i class="fa fa-list-ol"></i></button>
+            </div>
+            <div id="text-content" class="editor-text" contenteditable>
+                {{ param.content|raw }}
+            </div>
+        </div>
+    </div>
+    <div class="text-editor-submit">
+        <form method="post" id="form_edition_text">
+            <input type="hidden" name="edit_id_submit" value="{{ param.id }}" >
+        </form>
+        <button class="btn btn-primary btn-lg" id="submit-text-editor">Editer</button>
+        <button class="btn btn-danger btn-lg" id="exit-text-editor">Retour</button>
+    </div>
+{% endblock %}

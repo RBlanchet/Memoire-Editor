@@ -1,0 +1,109 @@
+{% extends "RomainMemoireBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block content %}
+    <div class="table-responsive">
+        <!-- EN COURS -->
+        <h3 class="text-center title-list"> En cours </h3>
+        <table class="table table-striped">
+            <thead class="text-center">
+            <tr>
+                <th class="th-33 text-center">Mois</th>
+                <th class="th-33 text-center">Modifié le</th>
+                <th class="th-33 text-center">Regarder</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-center">
+                <td>{{ courant.mois }}</td>
+                <td>{{ courant.dateModifier|date("d/m/Y à H:i") }}</td>
+                <td class="button-list">
+                    <form method="POST" action="./show">
+                        <input id="link_id" name="link_id" type="hidden" value="{{ courant.id }}">
+                        <input type="submit" value="Regarder" class="btn btn-primary btn-sm button-hover">
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- A VENIR -->
+        <h3 class="text-center title-list"> A venir </h3>
+        <table class="table table-striped">
+            <thead class="text-center">
+            <tr>
+                <th class="th-33 text-center">Mois</th>
+                <th class="th-33 text-center">Modifié le</th>
+                <th class="th-33 text-center">Regarder</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for a_venirs in a_venir %}
+                <tr class="text-center">
+                    <td>{{ a_venirs.mois }}</td>
+                    <td>
+                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip-month"
+                           data-placement="top"
+                           title="Le mois n'est pas encore en cours"></i>
+                        Le document est vide
+                    </td>
+                    <td class="button-list">
+                        <form method="POST" action="./show">
+                            <input id="link_id" name="link_id" type="hidden" value="{{ a_venirs.id }}">
+                            <input type="submit" value="Regarder" class="btn btn-primary btn-sm button-hover">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <!-- EXPIRER -->
+        <h3 class="text-center title-list"> Ecouler </h3>
+        <table class="table table-striped">
+            <thead class="text-center">
+            <tr>
+                <th class="th-33 text-center">Mois</th>
+                <th class="th-33 text-center">Modifié le</th>
+                <th class="th-33 text-center">Regarder</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ecoulers in ecouler %}
+                <tr class="text-center">
+                    <td>{{ ecoulers.mois }}</td>
+                    <td>{{ ecoulers.dateModifier|date("d/m/Y à H:i") }}</td>
+                    <td class="button-list">
+                        <form method="POST" action="./show">
+                            <input id="link_id" name="link_id" type="hidden" value="{{ ecoulers.id }}">
+                            <input type="submit" value="Regarder" class="btn btn-primary btn-sm button-hover">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block button_connect %}
+    <form method=\"POST\" action=\"?p=admin-deconnect\" class=\"edit-form form-inline my-2 my-lg-0 navbar-text\">
+        <ul class="navbar-nav mr-auto navbar-alignitems">
+            {% if auth == true %}
+                <li class="nav-item nav-item-li" style="color: white">
+                    Bonjour {{ auth_name }}
+                </li>
+                <li class="nav-item nav-item-li">
+                    <button style="margin-left: 10px" class="btn btn-danger" name="connect-button" type="submit" value="connect">Deconnecter</button>
+                </li>'
+            {% else %}
+                <li class="nav-item nav-item-li" style="color: white">
+                    Bonjour visiteur
+                </li>
+                <li class="nav-item nav-item-li">
+                    <button style="margin-left: 10px" class="btn btn-primary" name="connect-button" type="submit" value="connect">Connecter</button>
+                </li>
+            {% endif %}
+        </ul>
+    </form>
+{% endblock %}
