@@ -3,5 +3,8 @@
 {% block title %}{{ parent() }} - Erreur{% endblock %}
 
 {% block content %}
-    Ceci est une erreur
+    <div class="alert alert-danger text-center" role="alert">
+        <strong>Vous tentez d'accéder à la section édition par une autre méthode que celle décidée par le développeur.</strong>
+        <P>En cas de récidive vous vous exposerez à un potentiel bannissement définitif de notre plateforme.</P>
+    </div>
 {% endblock %}

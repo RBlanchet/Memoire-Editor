@@ -11,8 +11,10 @@
         {{ param.content|raw }}
         </div>
     </div>
-    <form method="post" action="./edit">
-        <input type="hidden" value="{{ param.id }}" name="edit_id">
-        <input type="submit" value="Editer" class="btn btn-primary btn-lg button_edit_content">
-    </form>
+    {% if logged is defined %}
+        <form method="post" action="./edit">
+            <input type="hidden" value="{{ param.id }}" name="edit_id">
+            <input type="submit" value="Editer" class="btn btn-primary btn-lg button_edit_content">
+        </form>
+    {% endif %}
 {% endblock %}

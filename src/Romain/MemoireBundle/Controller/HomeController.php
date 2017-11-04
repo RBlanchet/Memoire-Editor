@@ -9,13 +9,10 @@ class HomeController extends ChiefController
 {
     public function homeAction()
     {
-        $_POST['auth'] = true;
         return $this->render('RomainMemoireBundle:Home:home.html.twig', array(
             'courant' => $this->getRepoCourantMonth(),
             'a_venir' => $this->getAVenirMonth(),
             'ecouler' => $this->getEcoulerMonth(),
-            'auth' => $_POST['auth'],
-            'auth_name' => 'Romain',
         ));
     }
 

@@ -2,6 +2,10 @@ romain_memoire_home:
     path:     /home
     defaults: { _controller: RomainMemoireBundle:Home:Home }
 
+romain_memoire_homepage:
+    path:     /
+    defaults: { _controller: RomainMemoireBundle:Home:Home }
+
 romain_memoire_show:
     path:     /show
     defaults: { _controller: RomainMemoireBundle:Show:show }
@@ -9,3 +13,7 @@ romain_memoire_show:
 romain_memoire_edit:
     path:     /edit
     defaults: { _controller: RomainMemoireBundle:Edit:edit }
+
+romain_memoire_edition:
+    path:     /edition
+    defaults: { _controller: RomainMemoireBundle:Edition:edition }

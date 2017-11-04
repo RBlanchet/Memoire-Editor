@@ -37,12 +37,26 @@
                 <a class="nav-link" href="./home">Accueil</a>
             </li>
             <li class="nav-item nav-item-li">
-                <a class="nav-link" href="./edit">Edition</a>
+                <a class="nav-link" href="./edition">Edition</a>
             </li>
         </ul>
         <li class="nav-item navbar-alignitems">
-            {% block button_connect %}
-            {% endblock %}
+            <div>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <ul class="navbar-nav mr-auto navbar-alignitems">
+                        <li class="nav-item nav-item-li" style="color: white">
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                        </li>
+                        <li class="nav-item nav-item-li">
+                            <a class="btn btn-danger" href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <a class="btn btn-primary" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                {% endif %}
+            </div>
         </li>
     </div>
 </nav>
@@ -93,7 +107,8 @@
 <script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+{% block script %}
+{% endblock %}
 <script src='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.1/spectrum.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min.js'></script>
 <script  src="../js/text-editor/index.js"></script>
