@@ -7,6 +7,7 @@ class ShowController extends ChiefController
 {
     public function showAction()
     {
+        // On vérifie si l'user est connecté
         $user = $this->getUser();
         if($user != null)
         {
@@ -43,8 +44,6 @@ class ShowController extends ChiefController
                 return $this->render('RomainMemoireBundle:Error:error.html.twig');
             }
         }
-
-
 
     }
 }

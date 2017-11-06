@@ -30,7 +30,9 @@ class HomeController extends ChiefController
     protected function getAVenirMonth()
     {
         $em = $this->getDoctrine()->getManager();
+        // On execute une requête
         $query = $em->createQuery("SELECT m FROM RomainMemoireBundle:MemoireDoctrine m WHERE m.dateDebut > CURRENT_TIMESTAMP()");
+        // On récupère les résultats puis on les retourne
         $mois_a_venir = $query->getResult();
         return $mois_a_venir;
     }
@@ -38,7 +40,9 @@ class HomeController extends ChiefController
     protected function getEcoulerMonth()
     {
         $em = $this->getDoctrine()->getManager();
+        // On execute une requête
         $query = $em->createQuery("SELECT m FROM RomainMemoireBundle:MemoireDoctrine m WHERE m.dateFin < CURRENT_TIMESTAMP()");
+        // On récupère les résultats puis on les retourne
         $mois_ecouler = $query->getResult();
         return $mois_ecouler;
     }

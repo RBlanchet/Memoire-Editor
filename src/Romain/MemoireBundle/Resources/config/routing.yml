@@ -17,3 +17,11 @@ romain_memoire_edit:
 romain_memoire_edition:
     path:     /edition
     defaults: { _controller: RomainMemoireBundle:Edition:edition }
+
+romain_memoire_admin:
+    path:     /admin
+    defaults: { _controller: RomainMemoireBundle:Admin:admin }
+
+romain_memoire_admin_add:
+    path:     /admin/add
+    defaults: { _controller: RomainMemoireBundle:Admin:add }

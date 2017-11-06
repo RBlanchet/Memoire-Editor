@@ -7,9 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 // Controleur Parent
 class ChiefController extends Controller
 {
-    // On l'utilise dans deux endroits enfants
+    // On l'utilise dans deux controlleurs enfants
     protected function showMonth($id)
     {
+        // On récupère notre Entité
         $repository = $this
             ->getDoctrine()
             ->getManager()
